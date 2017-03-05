@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+body {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background-color: #D9EDF7;
+	font-family: Roboto;
+}
+
+.form-login{
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.form-login .form-login-head, .form-login{
+	margin-bottom: 10px;
+}
+
+.form-login {
+	font-weight: normal;
+}
+
+.form-login .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.form-login .form-control:focus {
+	z-index: 2;
+}
