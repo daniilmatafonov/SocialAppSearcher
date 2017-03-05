@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05.03.2017 17:33:45 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="User" table="User" catalog="socialappsearcher" optimistic-lock="version">
+        <id name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+            <generator class="identity" />
+        </id>
+        <property name="login" type="string">
+            <column name="login" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" not-null="true" />
+        </property>
+        <property name="enabled" type="byte">
+            <column name="enabled" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

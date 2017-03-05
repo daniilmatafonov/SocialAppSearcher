@@ -1,4 +1,4 @@
-package com.diskservice.controllers;
+package com.socialsearcher.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,16 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.diskservice.model.Disk;
-import com.diskservice.model.Takenitem;
-import com.diskservice.model.User;
-import com.diskservice.services.UserService;
+import com.socialsearcher.model.SocialPersonGroup;
+import com.socialsearcher.model.User;
+import com.socialsearcher.services.UserService;
 
 @Controller
 public class UserDiskController {
 
-	private Takenitem takenitem = new Takenitem();
+	private SocialPersonGroup takenitem = new SocialPersonGroup();
 
 	private UserService userService;
 
@@ -54,27 +52,27 @@ public class UserDiskController {
 
 	@RequestMapping(value = "/takenUserDisks", method = RequestMethod.GET)
 	public String listTakenUserDisks(Model model) {
-		model.addAttribute("takenDisk", new Takenitem());
+		model.addAttribute("takenDisk", new SocialPersonGroup());
 		model.addAttribute("listTakenUserDisks", userService.listTakenUserDisks());
 		return "disksTakenByUser";
 	}
 
 	@RequestMapping(value = "/disksTakenFromUser", method = RequestMethod.GET)
 	public String listTakenFromUserDisks(Model model) {
-		model.addAttribute("givenDisk", new Takenitem());
+		model.addAttribute("givenDisk", new SocialPersonGroup());
 		model.addAttribute("listGivenUserDisks", userService.listGivenUserDisks());
 		return "givenDisks";
 	}
 
 	@RequestMapping(value = "/freeDisks/take", method = RequestMethod.POST)
-	public String takeDisk(@ModelAttribute("takenitem") Takenitem takenitem, Model model) {
-		userService.addTakenItem(userService.findCurrentUser(), userService.findDisk(1));
+	public String takeDisk(@ModelAttribute("takenitem") SocialPersonGroup socialPersonGroup, Model model) {
+		userService.addSocialPersonGroup(userService.findCurrentUser(), userService.findDisk(1));
 		return "redirect:/freeDisks";
 	}
 
 	@RequestMapping(value = "/give/{id}", method = RequestMethod.GET)
 	public String deleteTakenDisk(@PathVariable("id") Integer id, Model model) {
-		userService.deleteTakenDisk(id);
+		userService.deleteSocialPersonGroup(id);
 		return "redirect:/freeDisks";
 	}
 

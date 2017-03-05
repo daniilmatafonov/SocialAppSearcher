@@ -1,18 +1,15 @@
-package com.diskservice.services;
-
-import java.util.HashSet;
+package com.socialsearcher.services;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.diskservice.dao.UserDao;
-import com.diskservice.model.Disk;
-import com.diskservice.model.Takenitem;
-import com.diskservice.model.User;
+import com.socialsearcher.dao.UserDao;
+import com.socialsearcher.model.SocialPerson;
+import com.socialsearcher.model.SocialPersonGroup;
+import com.socialsearcher.model.User;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,8 +18,8 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	@Override
-	public void addTakenItem(User user, Disk disk) {
-		userDAO.addTakenItem(user, disk);
+	public void addSocialPersonGroup(User user, SocialPerson socialPerson) {
+		userDAO.addSocialPersonGroup(user, socialPerson);
 
 	}
 
@@ -43,31 +40,31 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public Disk findDisk(int id) {
-		return userDAO.findDisk(id);
+	public SocialPerson findDisk(int id) {
+		return userDAO.findSocialPerson(id);
 	}
 
 	@Override
 	@Transactional
-	public List<Disk> listUserDisks() {
+	public List<SocialPerson> listUserDisks() {
 		return userDAO.listUserDisks(findCurrentUser());
 	}
 
 	@Override
 	@Transactional
-	public List<Disk> listFreeDisks() {
+	public List<SocialPerson> listFreeDisks() {
 		return userDAO.listFreeDisks();
 	}
 
 	@Override
 	@Transactional
-	public List<Takenitem> listTakenUserDisks() {
+	public List<SocialPersonGroup> listTakenUserDisks() {
 		return userDAO.listTakenUserDisks(findCurrentUser());
 	}
 
 	@Override
 	@Transactional
-	public List<Takenitem> listGivenUserDisks() {
+	public List<SocialPersonGroup> listGivenUserDisks() {
 		return userDAO.listGivenUserDisks(findCurrentUser());
 	}
 
@@ -88,14 +85,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public Takenitem findTakenItem(Integer diskId) {
-		return userDAO.findTakenItem(diskId);
+	public SocialPersonGroup findSocialPersonGroup(Integer id) {
+		return userDAO.findSocialPersonGroup(id);
 	}
 
 	@Override
 	@Transactional
-	public void deleteTakenDisk(Integer diskId) {
-		userDAO.deleteTakenDisk(diskId);
+	public void deleteSocialPersonGroup(Integer id) {
+		userDAO.deleteSocialPersonGroup(id);
 
 	}
 

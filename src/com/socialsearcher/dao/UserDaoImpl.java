@@ -1,19 +1,18 @@
-package com.diskservice.dao;
+package com.socialsearcher.dao;
 
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
-
-import com.diskservice.model.Disk;
-import com.diskservice.model.Takenitem;
-import com.diskservice.model.User;
+import com.socialsearcher.model.SocialPerson;
+import com.socialsearcher.model.SocialPersonGroup;
+import com.socialsearcher.model.User;
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
 	private SessionFactory sessionFactory;
-	Takenitem takenitem;
+	SocialPersonGroup socialPersonGroup;
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -24,14 +23,16 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void addTakenItem(User user, Disk disk) {
+	public void addSocialPersonGroup(User user, SocialPerson socialPerson) {
+		/*
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			Takenitem takenitem = new Takenitem(disk, user);
-			session.save(takenitem);
+			SocialPersonGroup socialPersonGroup = new SocialPersonGroup(socialPerson, user);
+			session.save(socialPersonGroup);
 		} catch (Exception e) {
 			String mes = e.getMessage();
 		}
+		*/
 	}
 
 	@SuppressWarnings("unchecked")
@@ -44,31 +45,31 @@ public class UserDaoImpl implements UserDao {
 
 	
 
-	public Disk findDisk(int id) {
+	public SocialPerson findSocialPerson(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Disk disk = (Disk) session.createQuery("from Disk where diskId=" + id).uniqueResult();
+		SocialPerson disk = (SocialPerson) session.createQuery("from SocialPerson where diskId=" + id).uniqueResult();
 		return disk;
 
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Disk> listUserDisks(User user) {
+	public List<SocialPerson> listUserDisks(User user) {
 		Integer userId = user.getUserId();
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from Disk where user=" + userId).list();
+		return session.createQuery("from SocialPerson where user=" + userId).list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Disk> listFreeDisks() {
+	public List<SocialPerson> listFreeDisks() {
 		Session session = sessionFactory.getCurrentSession();
-		return session.createQuery("from Disk where diskId not in (select disk from Takenitem)").list();
+		return session.createQuery("from SocialPerson where id not in (select disk from SocialPersonGroup)").list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Takenitem> listTakenUserDisks(User user) {
+	public List<SocialPersonGroup> listTakenUserDisks(User user) {
 		String login = user.getLogin();
 		Session session = sessionFactory.getCurrentSession();
 		return session
@@ -79,10 +80,10 @@ public class UserDaoImpl implements UserDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Takenitem> listGivenUserDisks(User user) {
+	public List<SocialPersonGroup> listGivenUserDisks(User user) {
 		String login = user.getLogin();
 		Session session = sessionFactory.getCurrentSession();
-		List<Takenitem> givenDisks = session.createQuery("from Takenitem where disk.user.login=?").setParameter(0, login).list();
+		List<SocialPersonGroup> givenDisks = session.createQuery("from Takenitem where disk.user.login=?").setParameter(0, login).list();
 		return givenDisks;
 	}
 
@@ -94,15 +95,15 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public Takenitem findTakenItem(Integer diskId) {
+	public SocialPersonGroup findSocialPersonGroup(Integer diskId) {
 		Session session = sessionFactory.getCurrentSession();
-		return (Takenitem) session.createQuery("from Takenitem where disk.diskId=" + diskId).uniqueResult();
+		return (SocialPersonGroup) session.createQuery("from SocialPersonGroup where disk.diskId=" + diskId).uniqueResult();
 	}
 
 	@Override
-	public void deleteTakenDisk(Integer diskId) {
+	public void deleteSocialPersonGroup(Integer id) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(findTakenItem(diskId));
+		session.delete(findSocialPersonGroup(id));
 
 	}
 

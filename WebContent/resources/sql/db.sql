@@ -1,4 +1,4 @@
-CREATE database disks;
+CREATE database socialappsearcher;
 
 CREATE TABLE UserRole (
   user_id int not null PRIMARY KEY unique AUTO_INCREMENT,
@@ -15,19 +15,27 @@ CREATE TABLE User (
   enabled TINYINT NOT NULL DEFAULT 1
 );
 
-CREATE TABLE Disk (
-  disk_id int not null PRIMARY KEY unique AUTO_INCREMENT,
-  title VARCHAR(50) not null,
+CREATE TABLE SocialPerson (
+  id int not null PRIMARY KEY unique AUTO_INCREMENT,
+  last_name VARCHAR(50) not null,
+  first_name VARCHAR(50) not null,
+  middle_name VARCHAR(50) null,
+  gender VARCHAR(20) null,
+  birthday VARCHAR(50) null,
+  political VARCHAR(50) null,
+  about VARCHAR(50) null,
+  religion VARCHAR(50) null,
+  work VARCHAR(50) null,
   user_id int not null,
   FOREIGN KEY (user_id) references User(user_id)
 );
 
-CREATE TABLE TakenItem (
-  taken_item_id int not null PRIMARY KEY unique AUTO_INCREMENT,
+CREATE TABLE SocialPersonGroup (
+  id int not null PRIMARY KEY unique AUTO_INCREMENT,
   user_id int not null,
-  disk_id int not null,
+  social_person_id int not null,
   FOREIGN KEY (user_id) references User(user_id),
-  FOREIGN KEY (disk_id) references Disk(disk_id)
+  FOREIGN KEY (social_person_id) references SocialPerson(id)
 );
 
 
@@ -35,7 +43,3 @@ insert into User (login, password, enabled) values ('petr','qwerty', 1);
 insert into UserRole (name, role, user_id_fk) values ('Petr','user', 1);
 insert into User (login, password, enabled) values ('alex','qwerty', 1);
 insert into UserRole (name, role, user_id_fk) values ('alex','user', 2);
-
-insert into Disk (title, user_id) values ('Metallica', 1);
-insert into Disk (title, user_id) values ('The Beatles', 2);
-insert into TakenItem (user_id, disk_id) values (2,1);
