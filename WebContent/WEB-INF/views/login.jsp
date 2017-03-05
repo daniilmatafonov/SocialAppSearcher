@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html">
-<title>Login Page</title>
+<title>Social Searcher</title>
 <script
 	src="${pageContext.servletContext.contextPath}/resources/js/jquery-2.2.3.js"
 	type="text/javascript"></script>
@@ -26,7 +26,7 @@
 <body>
 	<div class="container">
 		<div id="login-box" class="form-login">
-			<h2 class="form-login-head">Log In</h2>
+			<h2 class="form-login-head text-align-center">Social Searcher</h2>
 			<s:url var="login" value="/login"/>
 			<sf:form name='loginForm' class="form-login form-control"
 				action="${login}" method='POST'>

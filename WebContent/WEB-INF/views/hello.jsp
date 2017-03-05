@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
@@ -22,20 +23,23 @@
 </head>
 <body>
 	<div class="container">
-		<ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="freeDisks">Free
-					disks</a></li>
-			<li role="presentation" class="active"><a href="takenUserDisks">Taken
-					by user</a></li>
-			<li role="presentation" class="active"><a href="userDisks">User disks</a></li>
-		</ul>
-		<br></br>
-		<security:authorize access="isAuthenticated()">
+	<security:authorize access="isAuthenticated()">
 					Authenticated as
 					<security:authentication property="principal.username" />
 		</security:authorize>
 		<a href="<c:url value="logout" />">Logout</a>
-
+		<ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="#">Search in Facebook</a></li>
+			<li role="presentation" class="active"><a href="#">Search in Twitter</a></li>
+		</ul>
+		<br></br>
+		<div id="search">
+		<h3 class="text-align-center">Find information about people in Social Networks</h3>
+		<form id="searchForm" class="form-search">
+		 <input type="text" class="form-control" name="search">	
+		 <button name="submit" type="submit" class="btn btn-lg btn-primary btn-block">Find</button>
+		</form>
+		</div>
 	</div>
 </body>
 </html>

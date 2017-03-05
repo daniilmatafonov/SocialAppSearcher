@@ -4,21 +4,27 @@ body {
 	padding-top: 40px;
 	padding-bottom: 40px;
 	background-color: #D9EDF7;
-	font-family: Roboto;
+	font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;;
+}
+
+.text-align-center{
+	text-align: center !important;
+}
+
+.form-search{
+	max-width: 500px;
+	margin: 0 auto;
 }
 
 .form-login{
 	max-width: 330px;
 	padding: 15px;
 	margin: 0 auto;
+	font-weight: normal;
 }
 
 .form-login .form-login-head, .form-login{
 	margin-bottom: 10px;
-}
-
-.form-login {
-	font-weight: normal;
 }
 
 .form-login .form-control {
