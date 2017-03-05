@@ -118,5 +118,3 @@ buildNumber.properties
 
 # Exclude maven wrapper
 !/.mvn/wrapper/maven-wrapper.jar
-
-# End of https://www.gitignore.io/api/eclipse,macos,java,maven
