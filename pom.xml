@@ -69,6 +69,15 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
+		<!-- Social Networks Facebook -->
+		
+		<dependency>
+		    <groupId>com.restfb</groupId>
+		    <artifactId>restfb</artifactId>
+		    <version>1.36.0</version>
+		</dependency>
+		
+		<!-- Social Networks Facebook -->
 
 		<!-- Logging -->
 		<dependency>

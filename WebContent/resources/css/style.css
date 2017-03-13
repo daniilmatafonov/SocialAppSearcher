@@ -11,6 +11,10 @@ body {
 	text-align: center !important;
 }
 
+.fields{
+	display : none;
+}
+
 .form-search{
 	max-width: 500px;
 	margin: 0 auto;
