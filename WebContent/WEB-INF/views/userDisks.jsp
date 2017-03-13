@@ -52,7 +52,7 @@
 			<tbody>
 				<c:forEach items="${listUserDisks}" var="disk">
 					<tr>
-						<td>${disk.title}</td>
+						<td>${disk.lastName}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

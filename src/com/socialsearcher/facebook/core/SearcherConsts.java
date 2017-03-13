@@ -1,0 +1,6 @@
+package com.socialsearcher.facebook.core;
+
+public class SearcherConsts {
+
+	public static final String ACCESS_TOKEN = "EAAHGJeLBWPcBAJTpX9USdLu00YENhY3A8iuytzQbhiVDrXf5RmDpDtXqNaX8Yk5Kp4MQ9BsSKbe50y8EtNKUZBNhmZB8TRfRkXvl7mHJXFHrUxQpVVyjcNb8rB5QBToHcfDGLdzW5VITNDeW9uP1pER7THnDItTiOBrqGnS07MQsz7I4yGhpQuNTjMmZAUZD";
+}

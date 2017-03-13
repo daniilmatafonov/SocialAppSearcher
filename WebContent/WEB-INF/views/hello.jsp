@@ -31,12 +31,10 @@
 		<a href="<c:url value="logout" />">Logout</a>
 		
 		<br></br>
+	
 		<div id="search">
 		<h3 class="text-align-center">Find information about people in Social Networks</h3>
 		<form id="searchForm" class="form-search">
-		 Last name <input type="text" class="form-control" name="l_name"/>
-		 first name <input type="text" class="form-control" name="f_name"/>
-		 Middle name <input type="text" class="form-control" name="m_name"/>
 		 <div>
 		 	Male <input type="radio" value="Male" name="m_gender" checked/>
 		 	Female <input type="radio" value="Female" name="f_gender"/>

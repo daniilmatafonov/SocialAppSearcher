@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.socialsearcher.facebook.core.FaceBookSearcherService;
+import com.socialsearcher.facebook.core.FaceBookSearcherServiceImpl;
+import com.socialsearcher.facebook.core.SearcherConsts;
 import com.socialsearcher.model.SocialPersonGroup;
 import com.socialsearcher.model.User;
 import com.socialsearcher.services.UserService;
@@ -23,7 +27,10 @@ import com.socialsearcher.services.UserService;
 public class UserDiskController {
 
 	private SocialPersonGroup takenitem = new SocialPersonGroup();
+	private FaceBookSearcherServiceImpl faceBookSearcherServiceImpl;
+	
 
+	@Autowired
 	private UserService userService;
 
 	public UserService getUserService() {
@@ -38,7 +45,7 @@ public class UserDiskController {
 
 	@RequestMapping(value = "/userDisks", method = RequestMethod.GET)
 	public String listUserDisks(Model model) {
-		model.addAttribute("listUserDisks", userService.listUserDisks());
+		com.restfb.types.User user = faceBookSearcherServiceImpl.findUser(SearcherConsts.ACCESS_TOKEN);
 		return "userDisks";
 
 	}
@@ -100,5 +107,7 @@ public class UserDiskController {
 	public String errorPage() {
 		return "403";
 	}
+
+	
 
 }
